@@ -30,4 +30,19 @@ CO_DAY100_R2.fastq.gz: OK
   --csv=config.csv \
   --output-dir=/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/CO_DiO_DAY100_ScRNA/20250212_AV241602_2_12_2025_A_Manoj/Samples/Manoj/2_direct_analysis_cellranger_multi/outs
 
+### config.csv
+
+[gene-expression]
+reference,/home/sor4003/store_sor4003/2a_cellranger_genome_index_nexflow/refdata-gex-GRCh38-2024-A
+create-bam,true
+
+[libraries]
+fastq_id,fastqs,feature_types
+CO_DAY100,/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/CO_DiO_DAY100_ScRNA/20250212_AV241602_2_12_2025_A_Manoj/Samples/Manoj/2_direct_analysis_cellranger_multi,Gene Expression
+
+[samples]
+sample_id,ocm_barcode_ids
+co_org,OB1|OB2
+dic_org,OB3|OB4
+
 
