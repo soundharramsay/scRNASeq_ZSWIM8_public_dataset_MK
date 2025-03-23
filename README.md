@@ -53,4 +53,10 @@ dic_org,OB3|OB4
 ssh sor4003@scu-login02.med.cornell.edu "tar czf - --exclude='*.bam' -C /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/CO_DiO_DAY100_ScRNA/20250212_AV241602_2_12_2025_A_Manoj/Samples/Manoj/mapping_results_with_fastq/outs/outs/per_sample_outs ." | tar xzf - -C ./
 
 
+####################### march22 
 
+[samples]
+sample_id,ocm_barcode_ids
+co_org,OB1
+dic_org,OB2
+CO_dio,OB3|OB4
