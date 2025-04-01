@@ -60,3 +60,12 @@ sample_id,ocm_barcode_ids
 co_org,OB1
 dic_org,OB2
 CO_dio,OB3|OB4
+
+
+
+############## reading 10x data 
+data_dir <- './'
+list.files(data_dir) # Should show barcodes.tsv, genes.tsv, and matrix.mtx
+expression_matrix <- Read10X(data.dir = data_dir)
+dic_seurat_object = CreateSeuratObject(counts = expression_matrix)
+[1] "barcodes.tsv.gz" "features.tsv.gz" "matrix.mtx.gz"
