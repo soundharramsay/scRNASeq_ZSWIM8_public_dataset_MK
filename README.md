@@ -66,6 +66,41 @@ CO_dio,OB3|OB4
 
 
 
+##### need editing ## slurn submission
+#!/bin/bash
+#SBATCH --job-name=scRNAseq
+#SBATCH --output=differentialabundance_%j.log
+#SBATCH --error=differentialabundance_%j.err
+#SBATCH --time=18:00:00  # 18 hours
+#SBATCH --cpus-per-task=40  # Adjusted the number of CPUs
+#SBATCH --mem=200G  # Adjusted the memory
+#SBATCH --partition=scu-cpu  # The specified partition
+
+# Run cellranger multi
+/home/sor4003/store_sor4003/software_folder/cellranger-9.0.1/bin/cellranger multi \
+  --id=split_march22 \
+  --csv=config.csv \
+  --output-dir=/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/2_batch_20250313_AV241602_3_13_2025_A_Manoj/Samples/Manoj_Pool
+
+### config.csv
+
+[gene-expression]
+reference,/home/sor4003/store_sor4003/2a_cellranger_genome_index_nexflow/refdata-gex-GRCh38-2024-A
+create-bam,true
+
+[libraries]
+fastq_id,fastqs,feature_types
+CO_DAY100, /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/2_batch_20250313_AV241602_3_13_2025_A_Manoj/Samples/Manoj_Pool,Gene Expression
+
+[samples]
+sample_id,ocm_barcode_ids
+co_org,OB1|OB2
+dic_org,OB3|OB4
+![image](https://github.com/user-attachments/assets/416379ea-d435-4a64-b441-11b22f50d59b)
+
+
+
+
 
 
 
