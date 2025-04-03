@@ -54,6 +54,9 @@ ssh sor4003@scu-login02.med.cornell.edu "tar czf - --exclude='*.bam' -C /home/so
 
 
 ####################### march22 
+#########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&&&&&&&&&********&&&&&&&&&&&&&
+############ batch2 run 
+/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/2_batch_20250313_AV241602_3_13_2025_A_Manoj/Samples/Manoj_Pool
 
 [samples]
 sample_id,ocm_barcode_ids
@@ -63,9 +66,6 @@ CO_dio,OB3|OB4
 
 
 
-############## reading 10x data 
-data_dir <- './'
-list.files(data_dir) # Should show barcodes.tsv, genes.tsv, and matrix.mtx
-expression_matrix <- Read10X(data.dir = data_dir)
-dic_seurat_object = CreateSeuratObject(counts = expression_matrix)
-[1] "barcodes.tsv.gz" "features.tsv.gz" "matrix.mtx.gz"
+
+
+
