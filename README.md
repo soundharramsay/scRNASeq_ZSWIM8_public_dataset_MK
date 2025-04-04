@@ -11,6 +11,11 @@ md5sum -c 20250212_AV241602_2_12_2025_A_Manoj.md5
 CO_DAY100_R1.fastq.gz: OK
 CO_DAY100_R2.fastq.gz: OK
 
+# fatsq_naming 
+mv CO_DAY135_R1.fastq.gz CO_DAY135_S1_L001_R1_001.fastq.gz
+mv CO_DAY135_R2.fastq.gz CO_DAY135_S1_L001_R2_001.fastq.gz
+
+
 #location of result
 /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/1_CO_DiO_DAY100_ScRNA/20250212_AV241602_2_12_2025_A_Manoj/Samples/Manoj/mapping_results_with_fastq
 
@@ -58,14 +63,6 @@ ssh sor4003@scu-login02.med.cornell.edu "tar czf - --exclude='*.bam' -C /home/so
 ############ batch2 run 
 /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/2_batch_20250313_AV241602_3_13_2025_A_Manoj/Samples/Manoj_Pool
 
-[samples]
-sample_id,ocm_barcode_ids
-co_org,OB1
-dic_org,OB2
-CO_dio,OB3|OB4
-
-
-
 ##### need editing ## slurn submission
 #!/bin/bash
 #SBATCH --job-name=scRNAseq
@@ -82,7 +79,8 @@ CO_dio,OB3|OB4
   --csv=config.csv \
   --output-dir=/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/2_batch_20250313_AV241602_3_13_2025_A_Manoj/Samples/Manoj_Pool
 
-### config.csv
+
+#########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&&&&&&&&&********&&&&&&&&&&&&& config 
 
 [gene-expression]
 reference,/home/sor4003/store_sor4003/2a_cellranger_genome_index_nexflow/refdata-gex-GRCh38-2024-A
@@ -90,13 +88,13 @@ create-bam,true
 
 [libraries]
 fastq_id,fastqs,feature_types
-CO_DAY100, /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/2_batch_20250313_AV241602_3_13_2025_A_Manoj/Samples/Manoj_Pool,Gene Expression
+CO_DAY135,/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/2_batch_20250313_AV241602_3_13_2025_A_Manoj/Samples/Manoj_Pool,Gene Expression
 
 [samples]
-sample_id,ocm_barcode_ids
-co_org,OB1|OB2
-dic_org,OB3|OB4
-![image](https://github.com/user-attachments/assets/416379ea-d435-4a64-b441-11b22f50d59b)
+sample_id,cmo_ids
+co_org,OB1
+dic_org,OB2
+co_dio,OB3|OB4
 
 
 
