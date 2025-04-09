@@ -96,6 +96,9 @@ co_org,OB1
 dic_org,OB2
 co_dio,OB3|OB4
 
+##### excluding bam and copy all
+rsync -avz --exclude='*.bam' sor4003@scu-login02.med.cornell.edu:/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/2_batch_20250313_AV241602_3_13_2025_A_Manoj/Samples/Manoj_Pool/run2_results_april8/outs/per_sample_outs .
+
 
 
 
