@@ -63,6 +63,10 @@ ssh sor4003@scu-login02.med.cornell.edu "tar czf - --exclude='*.bam' -C /home/so
 ############ batch2 run 
 /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/2_batch_20250313_AV241602_3_13_2025_A_Manoj/Samples/Manoj_Pool
 
+##### fastq ename 
+DiO_DAY184_R1.fastq.gz DiO_DAY184_S1_L001_R1_001.fastq.gz
+[sor4003@scu-login02 Manoj_Pool]$ mv DiO_DAY184_R2.fastq.gz DiO_DAY184_S1_L001_R2_001.fastq.gz
+
 ##### need editing ## slurn submission
 #!/bin/bash
 #SBATCH --job-name=scRNAseq
@@ -128,7 +132,7 @@ create-bam,true
 
 [libraries]  # change the fastq id 
 fastq_id,fastqs,feature_types
-CO_DAY135,/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/3_20250424_AV241602_4_24_2025_B_Manoj_run3/Samples/Manoj_Pool/,Gene Expression
+DiO_DAY184,/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/3_20250424_AV241602_4_24_2025_B_Manoj_run3/Samples/Manoj_Pool/,Gene Expression
 
 [samples]
 sample_id,cmo_ids
