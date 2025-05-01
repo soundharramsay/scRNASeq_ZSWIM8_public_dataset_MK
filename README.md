@@ -100,7 +100,40 @@ co_dio,OB3|OB4
 rsync -avz --exclude='*.bam' sor4003@scu-login02.med.cornell.edu:/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/2_batch_20250313_AV241602_3_13_2025_A_Manoj/Samples/Manoj_Pool/run2_results_april8/outs/per_sample_outs .
 
 
+####################### May 1
+#########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&&&&&&&&&********&&&&&&&&&&&&&
+############ batch3
 
+
+#!/bin/bash
+#SBATCH --job-name=scRNAseq
+#SBATCH --output=differentialabundance_%j.log
+#SBATCH --error=differentialabundance_%j.err
+#SBATCH --time=18:00:00  # 18 hours
+#SBATCH --cpus-per-task=40  # Adjusted the number of CPUs
+#SBATCH --mem=200G  # Adjusted the memory
+#SBATCH --partition=scu-cpu  # The specified partition
+
+# Run cellranger multi
+/home/sor4003/store_sor4003/software_folder/cellranger-9.0.1/bin/cellranger multi \
+  --id=split_may1 \
+  --csv=config.csv \
+  --output-dir=/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/3_20250424_AV241602_4_24_2025_B_Manoj_run3/Samples/Manoj_Pool/
+
+  #########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&&&&&&&&&********&&&&&&&&&&&&& config 
+
+[gene-expression]
+reference,/home/sor4003/store_sor4003/2a_cellranger_genome_index_nexflow/refdata-gex-GRCh38-2024-A
+create-bam,true
+
+[libraries]  # change the fastq id 
+fastq_id,fastqs,feature_types
+CO_DAY135,/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/3_20250424_AV241602_4_24_2025_B_Manoj_run3/Samples/Manoj_Pool/,Gene Expression
+
+[samples]
+sample_id,cmo_ids
+DIO_184,OB1
+CO_DIO_184,OB2|OB3|OB4
 
 
 
