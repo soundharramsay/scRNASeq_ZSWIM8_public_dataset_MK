@@ -95,7 +95,7 @@ fastq_id,fastqs,feature_types
 CO_DAY135,/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/2_batch_20250313_AV241602_3_13_2025_A_Manoj/Samples/Manoj_Pool,Gene Expression
 
 [samples]
-sample_id,cmo_ids
+sample_id,ocm_barcode_ids
 co_org,OB1
 dic_org,OB2
 co_dio,OB3|OB4
@@ -107,6 +107,12 @@ rsync -avz --exclude='*.bam' sor4003@scu-login02.med.cornell.edu:/home/sor4003/s
 ####################### May 1
 #########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&&&&&&&&&********&&&&&&&&&&&&&
 ############ batch3
+ md5sum -c 20250424_AV241602_4_24_2025_B_Manoj.md5
+DiO_DAY184_R1.fastq.gz: OK
+DiO_DAY184_R2.fastq.gz: OK
+
+ mv DiO_DAY184_R1.fastq.gz DiO_DAY184_S1_L001_R1_001.fastq.gz
+ mv DiO_DAY184_R2.fastq.gz DiO_DAY184_S1_L001_R2_001.fastq.gz 
 
 
 #!/bin/bash
@@ -135,8 +141,8 @@ fastq_id,fastqs,feature_types
 DiO_DAY184,/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/3_20250424_AV241602_4_24_2025_B_Manoj_run3/Samples/Manoj_Pool/,Gene Expression
 
 [samples]
-sample_id,cmo_ids
-DIO_184,OB1
+sample_id,ocm_barcode_ids
+DIO_c184,OB1
 CO_DIO_184,OB2|OB3|OB4
 
 
