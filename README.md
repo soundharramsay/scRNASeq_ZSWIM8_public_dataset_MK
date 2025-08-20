@@ -186,8 +186,28 @@ CO-DIO_DAY273,OB3|OB4
 
 ####################### GFP/ RFP mapping 
 
-> GFP_pENN
+>GFP_pENN
 atggtgagcaagggcgaggagctgttcaccggggtggtgcccatcctggtcgagctggacggcgacgtaaacggccacaagttcagcgtgtccggcgagggcgagggcgatgccacctacggcaagctgaccctgaagttcatctgcaccaccggcaagctgcccgtgccctggcccaccctcgtgaccaccctgacctacggcgtgcagtgcttcagccgctaccccgaccacatgaagcagcacgacttcttcaagtccgccatgcccgaaggctacgtccaggagcgcaccatcttcttcaaggacgacggcaactacaagacccgcgccgaggtgaagttcgagggcgacaccctggtgaaccgcatcgagctgaagggcatcgacttcaaggaggacggcaacatcctggggcacaagctggagtacaactacaacagccacaacgtctatatcatggccgacaagcagaagaacggcatcaaggtgaacttcaagatccgccacaacatcgaggacggcagcgtgcagctcgccgaccactaccagcagaacacccccatcggcgacggccccgtgctgctgcccgacaaccactacctgagcacccagtccgccctgagcaaagaccccaacgagaagcgcgatcacatggtcctgctggagttcgtgaccgccgccgggatcactctcggcatggacgagctgtacaagtaa
-> mcherry
+>mcherry
 atggtgagcaagggcgaggaggataacatggccatcatcaaggagttcatgcgcttcaaggtgcacatggagggctccgtgaacggccacgagttcgagatcgagggcgagggcgagggccgcccctacgagggcacccagaccgccaagctgaaggtgaccaagggtggccccctgcccttcgcctgggacatcctgtcccctcagttcatgtacggctccaaggcctacgtgaagcaccccgccgacatccccgactacttgaagctgtccttccccgagggcttcaagtgggagcgcgtgatgaacttcgaggacggcggcgtggtgaccgtgacccaggactcctccctgcaggacggcgagttcatctacaaggtgaagctgcgcggcaccaacttcccctccgacggccccgtaatgcagaagaagaccatgggctgggaggcctcctccgagcggatgtaccccgaggacggcgccctgaagggcgagatcaagcagaggctgaagctgaaggacggcggccactacgacgctgaggtcaagaccacctacaaggccaagaagcccgtgcagctgcccggcgcctacaacgtcaacatcaagttggacatcacctcccacaacgaggactacaccatcgtggaacagtacgaacgcgccgagggccgccactccaccggcggcatggacgagctgtacaagtaa
 
+awk '/^>/ {if (seqlen){print seqlen}; print; seqlen=0; next} {seqlen += length($0)} END {print seqlen}' GFP_mcherry.fa
+>gfp
+720
+>mcherry
+711
+
+echo -e 'gfp\tunknown\texon\t1\t720\t.\t+\t.\tgene_id "gfp"; transcript_id "gfp"; gene_name "gfp"; gene_biotype "protein_coding";' > GFP_mCherry.gtf
+
+echo -e 'mCherry\tunknown\texon\t1\t711\t.\t+\t.\tgene_id "mCherry"; transcript_id "mCherry"; gene_name "mCherry"; gene_biotype "protein_coding";' >> GFP_mCherry.gtf
+
+####
+cat GFP_mcherry.fa >> genome_mcherry_gfp.fa 
+####
+ grep ">" genome_mcherry_gfp.fa 
+ >KI270392.1 KI270392.1
+>KI270394.1 KI270394.1
+>gfp
+>mcherry
+####
+ cat GFP_mCherry.gtf >> genes.gtf
