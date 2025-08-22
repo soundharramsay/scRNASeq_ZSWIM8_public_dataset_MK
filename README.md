@@ -171,7 +171,7 @@ rename
   --output-dir=/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/1_UCSF_MK_et_al/4_20250723_AV241602_7_23_2025_A_Manoj/Samples/Manoj/CO_DAY273_fastq
 
 [gene-expression]
-reference,/home/sor4003/store_sor4003/2a_cellranger_genome_index_nexflow/refdata-gex-GRCh38-2024-A
+reference,/home/sor4003/store_sor4003/2a_cellranger_genome_index_nexflow/custom_genome_with_gfp_mcherry/human
 create-bam,true
 
 [libraries]  # change the fastq id 
@@ -211,3 +211,18 @@ cat GFP_mcherry.fa >> genome_mcherry_gfp.fa
 >mcherry
 ####
  cat GFP_mCherry.gtf >> genes.gtf
+
+ ####
+ #!/bin/bash
+#SBATCH --job-name=scRNAseq
+#SBATCH --output=differentialabundance_%j.log
+#SBATCH --error=differentialabundance_%j.err
+#SBATCH --time=18:00:00  # 18 hours
+#SBATCH --cpus-per-task=40  # Adjusted the number of CPUs
+#SBATCH --mem=200G  # Adjusted the memory
+#SBATCH --partition=scu-cpu  # The specified partition
+
+# Run cellranger multi
+/home/sor4003/store_sor4003/software_folder/cellranger-9.0.1/bin/cellranger mkref --genome=human --fasta=genome_mcherry_gfp.fa --genes=genes_mcherry_gfp.gtf  
+
+
