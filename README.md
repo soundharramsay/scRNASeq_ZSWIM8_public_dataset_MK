@@ -226,3 +226,49 @@ cat GFP_mcherry.fa >> genome_mcherry_gfp.fa
 /home/sor4003/store_sor4003/software_folder/cellranger-9.0.1/bin/cellranger mkref --genome=human --fasta=genome_mcherry_gfp.fa --genes=genes_mcherry_gfp.gtf  
 
 
+
+#############
+#################
+################################oct4 2025 bulk 
+
+md5sum check 
+md5sum -c 20250819_AV241602_081925Manoj.md5 
+CO-DIO_273_R1_R1.fastq.gz: OK
+CO-DIO_273_R1_R2.fastq.gz: OK
+CO-DIO_273_R2_R1.fastq.gz: OK
+CO-DIO_273_R2_R2.fastq.gz: OK
+CO-DIO_273_R3_R1.fastq.gz: OK
+CO-DIO_273_R3_R2.fastq.gz: OK
+hC0_273_R1_R1.fastq.gz: OK
+hC0_273_R1_R2.fastq.gz: OK
+hC0_273_R2_R1.fastq.gz: OK
+hC0_273_R2_R2.fastq.gz: OK
+hC0_273_R3_R1.fastq.gz: OK
+hC0_273_R3_R2.fastq.gz: OK
+hCO_100_R1_R1.fastq.gz: OK
+hCO_100_R1_R2.fastq.gz: OK
+hCO_100_R2_R1.fastq.gz: OK
+hCO_100_R2_R2.fastq.gz: OK
+hCO_100_R3_R1.fastq.gz: OK
+hCO_100_R3_R2.fastq.gz: OK
+hDIO_100_R1_R1.fastq.gz: OK
+hDIO_100_R1_R2.fastq.gz: OK
+hDIO_100_R2_R1.fastq.gz: OK
+hDIO_100_R2_R2.fastq.gz: OK
+hDIO_100_R3_R1.fastq.gz: OK
+hDIO_100_R3_R2.fastq.gz: OK
+hDIO_273_R1_R1.fastq.gz: OK
+hDIO_273_R1_R2.fastq.gz: OK
+hDIO_273_R2_R1.fastq.gz: OK
+hDIO_273_R2_R2.fastq.gz: OK
+hDIO_273_R3_R1.fastq.gz: OK
+hDIO_273_R3_R2.fastq.gz: OK
+############################# 15 samples 
+
+
+
+
+
+
+
+
