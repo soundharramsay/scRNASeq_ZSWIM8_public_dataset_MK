@@ -233,7 +233,7 @@ cat GFP_mcherry.fa >> genome_mcherry_gfp.fa
 
 md5sum check 
 md5sum -c 20250819_AV241602_081925Manoj.md5 
-CO-DIO_273_R1_R1.fastq.gz: OK
+CO-DIO_273_R1_R1.fastq.gz: OK------------------file transfer error rectified 
 CO-DIO_273_R1_R2.fastq.gz: OK
 CO-DIO_273_R2_R1.fastq.gz: OK
 CO-DIO_273_R2_R2.fastq.gz: OK
@@ -264,6 +264,24 @@ hDIO_273_R2_R2.fastq.gz: OK
 hDIO_273_R3_R1.fastq.gz: OK
 hDIO_273_R3_R2.fastq.gz: OK
 ############################# 15 samples 
+sample sheet 
+sample,fastq_1,fastq_2,strandedness
+CO-DIO_273_R1,./CO-DIO_273_R1_R1.fastq.gz,./CO-DIO_273_R1_R2.fastq.gz,auto
+CO-DIO_273_R2,./CO-DIO_273_R2_R1.fastq.gz,./CO-DIO_273_R2_R2.fastq.gz,auto
+CO-DIO_273_R3,./CO-DIO_273_R3_R1.fastq.gz,./CO-DIO_273_R3_R2.fastq.gz,auto
+hC0_273_R1,./hC0_273_R1_R1.fastq.gz,./hC0_273_R1_R2.fastq.gz,auto
+hC0_273_R2,./hC0_273_R2_R1.fastq.gz,./hC0_273_R2_R2.fastq.gz,auto
+hC0_273_R3,./hC0_273_R3_R1.fastq.gz,./hC0_273_R3_R2.fastq.gz,auto
+hCO_100_R1,./hCO_100_R1_R1.fastq.gz,./hCO_100_R1_R2.fastq.gz,auto
+hCO_100_R2,./hCO_100_R2_R1.fastq.gz,./hCO_100_R2_R2.fastq.gz,auto
+hCO_100_R3,./hCO_100_R3_R1.fastq.gz,./hCO_100_R3_R2.fastq.gz,auto
+hDIO_100_R1,./hDIO_100_R1_R1.fastq.gz,./hDIO_100_R1_R2.fastq.gz,auto
+hDIO_100_R2,./hDIO_100_R2_R1.fastq.gz,./hDIO_100_R2_R2.fastq.gz,auto
+hDIO_100_R3,./hDIO_100_R3_R1.fastq.gz,./hDIO_100_R3_R2.fastq.gz,auto
+hDIO_273_R1,./hDIO_273_R1_R1.fastq.gz,./hDIO_273_R1_R2.fastq.gz,auto
+hDIO_273_R2,./hDIO_273_R2_R1.fastq.gz,./hDIO_273_R2_R2.fastq.gz,auto
+hDIO_273_R3,./hDIO_273_R3_R1.fastq.gz,./hDIO_273_R3_R2.fastq.gz,auto
+
 
 
 
