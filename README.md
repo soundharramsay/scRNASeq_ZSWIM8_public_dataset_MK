@@ -263,24 +263,24 @@ hDIO_273_R2_R1.fastq.gz: OK
 hDIO_273_R2_R2.fastq.gz: OK
 hDIO_273_R3_R1.fastq.gz: OK
 hDIO_273_R3_R2.fastq.gz: OK
-############################# 15 samples 
+############################# 15 samples  >>> renamed 
 sample sheet 
-sample,fastq_1,fastq_2,strandedness
-CO-DIO_273_R1,./CO-DIO_273_R1_R1.fastq.gz,./CO-DIO_273_R1_R2.fastq.gz,auto
-CO-DIO_273_R2,./CO-DIO_273_R2_R1.fastq.gz,./CO-DIO_273_R2_R2.fastq.gz,auto
-CO-DIO_273_R3,./CO-DIO_273_R3_R1.fastq.gz,./CO-DIO_273_R3_R2.fastq.gz,auto
-hC0_273_R1,./hC0_273_R1_R1.fastq.gz,./hC0_273_R1_R2.fastq.gz,auto
-hC0_273_R2,./hC0_273_R2_R1.fastq.gz,./hC0_273_R2_R2.fastq.gz,auto
-hC0_273_R3,./hC0_273_R3_R1.fastq.gz,./hC0_273_R3_R2.fastq.gz,auto
-hCO_100_R1,./hCO_100_R1_R1.fastq.gz,./hCO_100_R1_R2.fastq.gz,auto
-hCO_100_R2,./hCO_100_R2_R1.fastq.gz,./hCO_100_R2_R2.fastq.gz,auto
-hCO_100_R3,./hCO_100_R3_R1.fastq.gz,./hCO_100_R3_R2.fastq.gz,auto
-hDIO_100_R1,./hDIO_100_R1_R1.fastq.gz,./hDIO_100_R1_R2.fastq.gz,auto
-hDIO_100_R2,./hDIO_100_R2_R1.fastq.gz,./hDIO_100_R2_R2.fastq.gz,auto
-hDIO_100_R3,./hDIO_100_R3_R1.fastq.gz,./hDIO_100_R3_R2.fastq.gz,auto
-hDIO_273_R1,./hDIO_273_R1_R1.fastq.gz,./hDIO_273_R1_R2.fastq.gz,auto
-hDIO_273_R2,./hDIO_273_R2_R1.fastq.gz,./hDIO_273_R2_R2.fastq.gz,auto
-hDIO_273_R3,./hDIO_273_R3_R1.fastq.gz,./hDIO_273_R3_R2.fastq.gz,auto
+CO-DIO_273_rep1,./CO-DIO_273_rep1_R1.fastq.gz,./CO-DIO_273_rep1_R2.fastq.gz,auto
+CO-DIO_273_rep2,./CO-DIO_273_rep2_R1.fastq.gz,./CO-DIO_273_rep2_R2.fastq.gz,auto
+CO-DIO_273_rep3,./CO-DIO_273_rep3_R1.fastq.gz,./CO-DIO_273_rep3_R2.fastq.gz,auto
+hC0_273_rep1,./hC0_273_rep1_R1.fastq.gz,./hC0_273_rep1_R2.fastq.gz,auto
+hC0_273_rep2,./hC0_273_rep2_R1.fastq.gz,./hC0_273_rep2_R2.fastq.gz,auto
+hC0_273_rep3,./hC0_273_rep3_R1.fastq.gz,./hC0_273_rep3_R2.fastq.gz,auto
+hCO_100_rep1,./hCO_100_rep1_R1.fastq.gz,./hCO_100_rep1_R2.fastq.gz,auto
+hCO_100_rep2,./hCO_100_rep2_R1.fastq.gz,./hCO_100_rep2_R2.fastq.gz,auto
+hCO_100_rep3,./hCO_100_rep3_R1.fastq.gz,./hCO_100_rep3_R2.fastq.gz,auto
+hDIO_100_rep1,./hDIO_100_rep1_R1.fastq.gz,./hDIO_100_rep1_R2.fastq.gz,auto
+hDIO_100_rep2,./hDIO_100_rep2_R1.fastq.gz,./hDIO_100_rep2_R2.fastq.gz,auto
+hDIO_100_rep3,./hDIO_100_rep3_R1.fastq.gz,./hDIO_100_rep3_R2.fastq.gz,auto
+hDIO_273_rep1,./hDIO_273_rep1_R1.fastq.gz,./hDIO_273_rep1_R2.fastq.gz,auto
+hDIO_273_rep2,./hDIO_273_rep2_R1.fastq.gz,./hDIO_273_rep2_R2.fastq.gz,auto
+hDIO_273_rep3,./hDIO_273_rep3_R1.fastq.gz,./hDIO_273_rep3_R2.fastq.gz,auto
+
 
 
 
