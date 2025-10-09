@@ -281,6 +281,38 @@ hDIO_273_rep1,./hDIO_273_rep1_R1.fastq.gz,./hDIO_273_rep1_R2.fastq.gz,auto
 hDIO_273_rep2,./hDIO_273_rep2_R1.fastq.gz,./hDIO_273_rep2_R2.fastq.gz,auto
 hDIO_273_rep3,./hDIO_273_rep3_R1.fastq.gz,./hDIO_273_rep3_R2.fastq.gz,auto
 
+##### slurm submission 
+#!/bin/bash
+#SBATCH --job-name=differentialabundance
+#SBATCH --output=differentialabundance_%j.log
+#SBATCH --error=differentialabundance_%j.err
+#SBATCH --time=18:00:00          # 18 hours
+#SBATCH --cpus-per-task=40       # Number of CPUs
+#SBATCH --mem=200G               # Memory
+#SBATCH --partition=scu-cpu      # Partition
+
+# === Activate Conda environment ===
+source /home/sor4003/anaconda3/etc/profile.d/conda.sh
+conda activate env_nf
+
+# === Nextflow memory settings (for JVM) ===
+export NXF_OPTS='-Xms1g -Xmx4g'
+
+# === Run nf-core/rnaseq pipeline ===
+NXF_VER=24.04.2 nextflow run nf-core/rnaseq \
+    -r 3.14.0 \
+    --input /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/sample_sheet.csv \
+    --igenomes_base /home/sor4003/store_sor4003/2_star_genome_index_nexflow/genome_GRch38_genecode_45_gtf_build_May2024_manually_added_cdr1as \
+    -profile singularity \
+    --fasta /home/sor4003/store_sor4003/2_star_genome_index_nexflow/genome_GRch38_genecode_45_gtf_build_May2024_manually_added_cdr1as/GRCh38.primary_assembly.genome.fa \
+    --gtf /home/sor4003/store_sor4003/2_star_genome_index_nexflow/genome_GRch38_genecode_45_gtf_build_May2024_manually_added_cdr1as/gencode.v46.basic.annotation.gtf \
+    --outdir /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj \
+    -resume \
+    --save_reference \
+    --featurecounts_group_type "gene_type" \
+    --max_memory '200.GB' \
+    --max_cpus 40 \
+    --max_time '30.h'
 
 
 
