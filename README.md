@@ -281,6 +281,9 @@ hDIO_273_rep1,./hDIO_273_rep1_R1.fastq.gz,./hDIO_273_rep1_R2.fastq.gz,auto
 hDIO_273_rep2,./hDIO_273_rep2_R1.fastq.gz,./hDIO_273_rep2_R2.fastq.gz,auto
 hDIO_273_rep3,./hDIO_273_rep3_R1.fastq.gz,./hDIO_273_rep3_R2.fastq.gz,auto
 
+
+
+
 ##### slurm submission 
 #!/bin/bash
 #SBATCH --job-name=differentialabundance
@@ -313,6 +316,34 @@ NXF_VER=24.04.2 nextflow run nf-core/rnaseq \
     --max_memory '200.GB' \
     --max_cpus 40 \
     --max_time '30.h'
+
+
+################## Differential expression 
+
+CO-DIO_273_rep1
+CO-DIO_273_rep2
+CO-DIO_273_rep3
+
+hC0_273_rep1
+hC0_273_rep2
+hC0_273_rep3
+
+hCO_100_rep1
+hCO_100_rep2
+hCO_100_rep3
+
+hDIO_100_rep1
+hDIO_100_rep2
+hDIO_100_rep3
+
+hDIO_273_rep1
+hDIO_273_rep2
+hDIO_273_rep3
+
+CO_DAY100 vs CO_DAY273 vs CO-DiO_DAY273
+DIO_DAY100 vs DIO_DAY273 vs CO-DiO_DAY273
+
+
 
 
 
