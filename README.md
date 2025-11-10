@@ -320,9 +320,9 @@ NXF_VER=24.04.2 nextflow run nf-core/rnaseq \
 
 ################## Differential expression 
 
-CO-DIO_273_rep1
-CO-DIO_273_rep2
-CO-DIO_273_rep3
+CO.DIO_273_rep1
+CO.DIO_273_rep2
+CO.DIO_273_rep3
 
 hC0_273_rep1
 hC0_273_rep2
@@ -339,6 +339,10 @@ hDIO_100_rep3
 hDIO_273_rep1
 hDIO_273_rep2
 hDIO_273_rep3
+
+CO.DIO_273_rep1
+CO.DIO_273_rep2
+CO.DIO_273_rep3
 
 CO_DAY100 vs CO_DAY273 vs CO-DiO_DAY273
 DIO_DAY100 vs DIO_DAY273 vs CO-DiO_DAY273
@@ -386,31 +390,14 @@ nextflow run nf-core/differentialabundance -r 1.5.0 \
 
 
 
-  ####### threeway approach 
+  ####### CO_DAY100_vs_CO-DIO_273##########################           2
 sample,fastq_1,fastq_2,condition,replicate,batch
-hCO_100_rep1,,,CO_DAY100,1,A
-hCO_100_rep2,,,CO_DAY100,2,A
-hCO_100_rep3,,,CO_DAY100,3,A
-hC0_273_rep1,,,CO_DAY273,1,A
-hC0_273_rep2,,,CO_DAY273,2,A
-hC0_273_rep3,,,CO_DAY273,3,A
-CO-DIO_273_rep1,,,CO-DIO_DAY273,1,A
-CO-DIO_273_rep2,,,CO-DIO_DAY273,2,A
-CO-DIO_273_rep3,,,CO-DIO_DAY273,3,A
-hDIO_100_rep1,,,DIO_DAY100,1,A
-hDIO_100_rep2,,,DIO_DAY100,2,A
-hDIO_100_rep3,,,DIO_DAY100,3,A
-hDIO_273_rep1,,,DIO_DAY273,1,A
-hDIO_273_rep2,,,DIO_DAY273,2,A
-hDIO_273_rep3,,,DIO_DAY273,3,A
-
-id,variable,reference,target,blocking
-CO_273_vs_100,condition,CO_DAY100,CO_DAY273,
-CO_DIO_273_vs_CO_100,condition,CO_DAY100,CO-DIO_DAY273,
-CO_DIO_273_vs_CO_273,condition,CO_DAY273,CO-DIO_DAY273,
-DIO_273_vs_100,condition,DIO_DAY100,DIO_DAY273,
-CO_DIO_273_vs_DIO_100,condition,DIO_DAY100,CO-DIO_DAY273,
-CO_DIO_273_vs_DIO_273,condition,DIO_DAY273,CO-DIO_DAY273,
+hCO_100_rep1,,,control,1,A
+hCO_100_rep2,,,control,2,A
+hCO_100_rep3,,,control,3,A
+CO.DIO_273_rep1,,,treated,1,A
+CO.DIO_273_rep2,,,treated,2,A
+CO.DIO_273_rep3,,,treated,3,A
 
 
 #!/bin/bash
@@ -428,16 +415,148 @@ conda activate env_nf
 
 # Run the nf-core/differentialabundance pipeline with resource limits
 nextflow run nf-core/differentialabundance -r 1.5.0 \
-  --input /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/2_sample_sheet_threeway.cs \   
-  --contrasts /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/2_threeway_contrastsheet.csv \
-  --outdir /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/3_way_deseq \        
+  --input /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/2_samplesheet_CO_DAY100_vs_CO-DIO_273.csv \
+  --contrasts /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/contrastsheet.csv \
+  --outdir /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/1_hco_100_Vs_CO-DIO_273 \
   -profile singularity \
   --matrix /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/salmon.merged.gene_counts.tsv \
-  --deseq2_shrink_lfc false \
   --transcript_length_matrix /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/salmon.merged.gene_lengths.tsv \
+  --deseq2_shrink_lfc false \
   --max_cpus 10 \
   --max_memory '16.GB' \
   --max_time '20m'
+
+  ####### CO_DAY273_vs_CO-DIO_273##########################           3
+sample,fastq_1,fastq_2,condition,replicate,batch
+hC0_273_rep1,,,control,1,A
+hC0_273_rep2,,,control,2,A
+hC0_273_rep3,,,control,3,A
+CO.DIO_273_rep1,,,treated,1,A
+CO.DIO_273_rep2,,,treated,2,A
+CO.DIO_273_rep3,,,treated,3,A
+
+#!/bin/bash
+#SBATCH --job-name=differentialabundance
+#SBATCH --output=differentialabundance_%j.log
+#SBATCH --error=differentialabundance_%j.err
+#SBATCH --time=00:20:00  # 20 minutes
+#SBATCH --cpus-per-task=10  # Adjust the number of CPUs as needed
+#SBATCH --mem=16G  # Adjust the memory as needed
+#SBATCH --partition=scu-cpu  # The specified partition
+
+# Activate the Conda environment
+source /home/sor4003/anaconda3/etc/profile.d/conda.sh
+conda activate env_nf
+
+# Run the nf-core/differentialabundance pipeline with resource limits
+nextflow run nf-core/differentialabundance -r 1.5.0 \
+  --input /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/3_samplesheet_CO_DAY273_vs_CO-DIO_273.csv \
+  --contrasts /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/contrastsheet.csv \
+  --outdir /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/1_hco_273_Vs_CO-DIO_273 \
+  -profile singularity \
+  --matrix /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/salmon.merged.gene_counts.tsv \
+  --transcript_length_matrix /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/salmon.merged.gene_lengths.tsv \
+  --deseq2_shrink_lfc false \
+  --max_cpus 10 \
+  --max_memory '16.GB' \
+  --max_time '20m'
+
+
+  ################################# 11111
+  sample,fastq_1,fastq_2,condition,replicate,batch
+hDIO_100_rep1,,,control,1,A
+hDIO_100_rep2,,,control,2,A
+hDIO_100_rep3,,,control,3,A
+hDIO_273_rep1,,,treated,1,A
+hDIO_273_rep2,,,treated,2,A
+hDIO_273_rep3,,,treated,3,A
+
+### contrast
+id,variable,reference,target,blocking
+condition_control_treated,condition,control,treated,
+
+
+####################################32222222
+sample,fastq_1,fastq_2,condition,replicate,batch
+hDIO_100_rep1,,,control,1,A
+hDIO_100_rep2,,,control,2,A
+hDIO_100_rep3,,,control,3,A
+CO.DIO_273_rep1,,,treated,1,A
+CO.DIO_273_rep2,,,treated,2,A
+CO.DIO_273_rep3,,,treated,3,A
+
+### contrast
+id,variable,reference,target,blocking
+condition_control_treated,condition,control,treated,
+
+
+####################################32222222
+sample,fastq_1,fastq_2,condition,replicate,batch
+hDIO_273_rep1,,,control,1,A
+hDIO_273_rep2,,,control,2,A
+hDIO_273_rep3,,,control,3,A
+CO.DIO_273_rep1,,,treated,1,A
+CO.DIO_273_rep2,,,treated,2,A
+CO.DIO_273_rep3,,,treated,3,A
+
+### contrast
+id,variable,reference,target,blocking
+condition_control_treated,condition,control,treated,
+
+
+#!/bin/bash
+#SBATCH --job-name=differentialabundance_batch
+#SBATCH --output=differentialabundance_batch_%j.log
+#SBATCH --error=differentialabundance_batch_%j.err
+#SBATCH --time=01:00:00
+#SBATCH --cpus-per-task=10
+#SBATCH --mem=16G
+#SBATCH --partition=scu-cpu
+
+# Activate Conda environment
+source /home/sor4003/anaconda3/etc/profile.d/conda.sh
+conda activate env_nf
+
+### ========================== Run 1: hDIO_100 vs hDIO_273 ==========================
+nextflow run nf-core/differentialabundance -r 1.5.0 \
+  --input /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/41_samplesheet_hDIO_100_vs_hDIO_273.csv \
+  --contrasts /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/contrastsheet.csv \
+  --outdir /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/41_hDIO_100_vs_hDIO_273 \
+  -profile singularity \
+  --matrix /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/salmon.merged.gene_counts.tsv \
+  --transcript_length_matrix /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/salmon.merged.gene_lengths.tsv \
+  --deseq2_shrink_lfc false \
+  --max_cpus 10 \
+  --max_memory '16.GB' \
+  --max_time '20m'
+
+### ========================== Run 2: hDIO_100 vs CO-DIO_273 ==========================
+nextflow run nf-core/differentialabundance -r 1.5.0 \
+  --input /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/42_samplesheet_hDIO_100_vs_CO-DIO_273.csv \
+  --contrasts /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/contrastsheet.csv \
+  --outdir /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/42_hDIO_100_vs_CO-DIO_273 \
+  -profile singularity \
+  --matrix /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/salmon.merged.gene_counts.tsv \
+  --transcript_length_matrix /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/salmon.merged.gene_lengths.tsv \
+  --deseq2_shrink_lfc false \
+  --max_cpus 10 \
+  --max_memory '16.GB' \
+  --max_time '20m'
+
+### ========================== Run 3: hDIO_273 vs CO-DIO_273 ==========================
+nextflow run nf-core/differentialabundance -r 1.5.0 \
+  --input /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/43_samplesheet_hDIO_273_vs_CO-DIO_273.csv \
+  --contrasts /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/contrastsheet.csv \
+  --outdir /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/43_hDIO_273_vs_CO-DIO_273 \
+  -profile singularity \
+  --matrix /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/salmon.merged.gene_counts.tsv \
+  --transcript_length_matrix /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/salmon.merged.gene_lengths.tsv \
+  --deseq2_shrink_lfc false \
+  --max_cpus 10 \
+  --max_memory '16.GB' \
+  --max_time '20m'
+
+
 
 
 
