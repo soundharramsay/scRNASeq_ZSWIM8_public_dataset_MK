@@ -344,6 +344,104 @@ CO_DAY100 vs CO_DAY273 vs CO-DiO_DAY273
 DIO_DAY100 vs DIO_DAY273 vs CO-DiO_DAY273
 
 
+### 
+### _______________________sample sheet CO_DAY100_vs_CO_DAY27 
+sample,fastq_1,fastq_2,condition,replicate,batch
+hCO_100_rep1,,,control,1,A
+hCO_100_rep2,,,control,2,A
+hCO_100_rep3,,,control,3,A
+hC0_273_rep1,,,treated,1,A
+hC0_273_rep2,,,treated,2,A
+hC0_273_rep3,,,treated,3,A
+
+### contrast
+id,variable,reference,target,blocking
+condition_control_treated,condition,control,treated,
+
+#!/bin/bash
+#SBATCH --job-name=differentialabundance
+#SBATCH --output=differentialabundance_%j.log
+#SBATCH --error=differentialabundance_%j.err
+#SBATCH --time=00:20:00  # 20 minutes
+#SBATCH --cpus-per-task=10  # Adjust the number of CPUs as needed
+#SBATCH --mem=16G  # Adjust the memory as needed
+#SBATCH --partition=scu-cpu  # The specified partition
+
+# Activate the Conda environment
+source /home/sor4003/anaconda3/etc/profile.d/conda.sh
+conda activate env_nf
+
+# Run the nf-core/differentialabundance pipeline with resource limits
+nextflow run nf-core/differentialabundance -r 1.5.0 \
+  --input /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/1_samplesheet_CO_DAY100_vs_CO_DAY273.csv \      #### change 
+  --contrasts /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/contrastsheet.csv \
+  --outdir /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/1_hco_100_Vs_hco273 \         ##### change 
+  -profile singularity \
+  --matrix /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/salmon.merged.gene_counts.tsv \
+  --deseq2_shrink_lfc false \
+  --transcript_length_matrix /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/salmon.merged.gene_lengths.tsv \
+  --max_cpus 10 \
+  --max_memory '16.GB' \
+  --max_time '20m'
+
+
+
+  ####### threeway approach 
+sample,fastq_1,fastq_2,condition,replicate,batch
+hCO_100_rep1,,,CO_DAY100,1,A
+hCO_100_rep2,,,CO_DAY100,2,A
+hCO_100_rep3,,,CO_DAY100,3,A
+hC0_273_rep1,,,CO_DAY273,1,A
+hC0_273_rep2,,,CO_DAY273,2,A
+hC0_273_rep3,,,CO_DAY273,3,A
+CO-DIO_273_rep1,,,CO-DIO_DAY273,1,A
+CO-DIO_273_rep2,,,CO-DIO_DAY273,2,A
+CO-DIO_273_rep3,,,CO-DIO_DAY273,3,A
+hDIO_100_rep1,,,DIO_DAY100,1,A
+hDIO_100_rep2,,,DIO_DAY100,2,A
+hDIO_100_rep3,,,DIO_DAY100,3,A
+hDIO_273_rep1,,,DIO_DAY273,1,A
+hDIO_273_rep2,,,DIO_DAY273,2,A
+hDIO_273_rep3,,,DIO_DAY273,3,A
+
+id,variable,reference,target,blocking
+CO_273_vs_100,condition,CO_DAY100,CO_DAY273,
+CO_DIO_273_vs_CO_100,condition,CO_DAY100,CO-DIO_DAY273,
+CO_DIO_273_vs_CO_273,condition,CO_DAY273,CO-DIO_DAY273,
+DIO_273_vs_100,condition,DIO_DAY100,DIO_DAY273,
+CO_DIO_273_vs_DIO_100,condition,DIO_DAY100,CO-DIO_DAY273,
+CO_DIO_273_vs_DIO_273,condition,DIO_DAY273,CO-DIO_DAY273,
+
+
+#!/bin/bash
+#SBATCH --job-name=differentialabundance
+#SBATCH --output=differentialabundance_%j.log
+#SBATCH --error=differentialabundance_%j.err
+#SBATCH --time=00:20:00  # 20 minutes
+#SBATCH --cpus-per-task=10  # Adjust the number of CPUs as needed
+#SBATCH --mem=16G  # Adjust the memory as needed
+#SBATCH --partition=scu-cpu  # The specified partition
+
+# Activate the Conda environment
+source /home/sor4003/anaconda3/etc/profile.d/conda.sh
+conda activate env_nf
+
+# Run the nf-core/differentialabundance pipeline with resource limits
+nextflow run nf-core/differentialabundance -r 1.5.0 \
+  --input /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/2_sample_sheet_threeway.cs \   
+  --contrasts /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/2_threeway_contrastsheet.csv \
+  --outdir /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/3_way_deseq \        
+  -profile singularity \
+  --matrix /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/salmon.merged.gene_counts.tsv \
+  --deseq2_shrink_lfc false \
+  --transcript_length_matrix /home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk/Samples/Manoj/star_salmon/salmon.merged.gene_lengths.tsv \
+  --max_cpus 10 \
+  --max_memory '16.GB' \
+  --max_time '20m'
+
+
+
+
 
 
 
