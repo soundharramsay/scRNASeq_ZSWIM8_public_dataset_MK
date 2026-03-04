@@ -558,6 +558,18 @@ nextflow run nf-core/differentialabundance -r 1.5.0 \
 
 
 
+March 4 2026 
+
+
+
+
+### copying bulk data in to rockfeller server 
+
+1)
+ 2_UCSF_MK_et_al_bulk]$ pwd
+scp -r "sor4003@scu-login01.med.cornell.edu:/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk" ./ ----ongoing as of march 4 
+
+
 
 
 
