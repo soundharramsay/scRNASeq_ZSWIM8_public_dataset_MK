@@ -569,7 +569,7 @@ March 4 2026
  2_UCSF_MK_et_al_bulk]$ pwd
 scp -r "sor4003@scu-login01.med.cornell.edu:/home/sor4003/store_sor4003/RNAseq_results_fastq/public_datasets/2_UCSF_MK_et_al_bulk" ./ ----ongoing as of march 4 ----not completed
 
-magsigpro analsysis is done 
+magsigpro analsysis is done  ---uploaded in RU mail ID one drive 
 
 
 
